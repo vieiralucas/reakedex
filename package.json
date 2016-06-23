@@ -1,0 +1,48 @@
+{
+  "name": "reakedex",
+  "version": "0.0.0",
+  "description": "Reakedex is a pokedex build with react backed by pokeapi.co",
+  "scripts": {
+    "start": "babel-node server.js",
+    "lint": "eslint src",
+    "test": "_mocha --compilers js:babel-core/register --recursive",
+    "test:watch": "npm run test -- --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vieiralucas/reakedex.git"
+  },
+  "keywords": [
+    "pokemon",
+    "pokedex",
+    "react",
+    "redux"
+  ],
+  "author": "Lucas Vieira <vieiralucas4@gmail.com> (http://github.com/vieiralucas)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vieiralucas/reakedex/issues"
+  },
+  "homepage": "https://github.com/vieiralucas/reakedex",
+  "devDependencies": {
+    "babel-cli": "^6.10.1",
+    "babel-core": "^6.0.20",
+    "babel-eslint": "^4.1.3",
+    "babel-loader": "^6.0.1",
+    "babel-preset-es2015": "^6.0.15",
+    "babel-preset-react": "^6.0.15",
+    "babel-preset-stage-0": "^6.0.15",
+    "chai": "^3.5.0",
+    "eslint": "^1.10.3",
+    "eslint-plugin-react": "^3.6.2",
+    "mocha": "^2.5.3",
+    "react-addons-test-utils": "^15.1.0",
+    "react-hot-loader": "^1.3.0",
+    "webpack": "^1.12.2",
+    "webpack-dev-server": "^1.12.1"
+  },
+  "dependencies": {
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0"
+  }
+}
