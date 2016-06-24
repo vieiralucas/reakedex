@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
+import PokemonList from './PokemonList';
 
-export default class App extends Component {
-  render() {
-    return (
-      <h1>Hello, world.</h1>
-    );
+const pokemons = [
+  {
+    id: 1,
+    name: 'Bulbasaur'
   }
-}
+];
+
+const App = () => <PokemonList
+  pokemons={pokemons}
+  onPokemonClick={() => undefined}
+/>
+
+export default App;
