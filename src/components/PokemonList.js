@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import PokemonItem from './PokemonItem';
 
 const PokemonList = ({ pokemons, onPokemonClick }) => (
-  <ul>
+  <ul className="pokemon-list">
     {pokemons.map(pokemon =>
       <PokemonItem
         name={pokemon.name}
