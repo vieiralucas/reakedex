@@ -1,9 +1,9 @@
 require('./styles/main.less');
 
 import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './components/App';
+import { render } from 'react-dom';
+import Root from './containers/Root';
 
-window.onload = function() {
-  ReactDOM.render(<App />, document.getElementById('root'));
-}
+const rootEl = document.getElementById('root');
+
+render(<Root />, rootEl);

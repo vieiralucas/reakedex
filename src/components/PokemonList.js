@@ -5,6 +5,7 @@ const PokemonList = ({ pokemons, onPokemonClick }) => (
   <ul className="pokemon-list">
     {pokemons.map(pokemon =>
       <PokemonItem
+        key={pokemon.id}
         name={pokemon.name}
         {...pokemon}
         onClick={() => onPokemonClick(pokemon.id)}
@@ -12,13 +13,5 @@ const PokemonList = ({ pokemons, onPokemonClick }) => (
     )}
   </ul>
 );
-
-PokemonList.propTypes = {
-  pokemons: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired
-  }).isRequired).isRequired,
-  onPokemonClick: PropTypes.func.isRequired
-};
 
 export default PokemonList;

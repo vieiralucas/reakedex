@@ -7,9 +7,4 @@ const PokemonItem = ({ name, img, onClick }) => (
   </li>
 )
 
-PokemonItem.propTypes = {
-  name: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired
-};
-
 export default PokemonItem;
