@@ -18,7 +18,11 @@ class AsyncApp extends Component {
     return (
       <div>
         {pokemons.isFetching && pokemons.pokemons.length === 0 &&
-          <h2>Loading...</h2>
+          <div className="spinner">
+            <div className="bounce1"></div>
+            <div className="bounce2"></div>
+            <div className="bounce3"></div>
+          </div>
         }
         {pokemons.pokemons.length > 0 && 
           <PokemonList pokemons={pokemons.pokemons} />
