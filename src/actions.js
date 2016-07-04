@@ -13,7 +13,7 @@ export const receivePokemons = pokemons => ({
 export const fetchPokemons = () => {
   return dispatch => {
     dispatch(requestPokemons());
-    return fetch('http://pokeapi.co/api/v2/pokemon/?limit=151')
+    return fetch('https://pokeapi.co/api/v2/pokemon/?limit=151')
       .then(response => response.json())
       .then(pokemons => pokemons.results.map(p => ({
         id: getNumber(p),
@@ -25,4 +25,4 @@ export const fetchPokemons = () => {
 };
 
 const getNumber = pokemon => Number(pokemon.url.split('/').slice(-2).shift());
-const generateImgUrl = pokemon => `http://pokeapi.co/media/sprites/pokemon/${getNumber(pokemon)}.png`;
+const generateImgUrl = pokemon => `https://pokeapi.co/media/sprites/pokemon/${getNumber(pokemon)}.png`;
