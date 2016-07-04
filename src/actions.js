@@ -13,7 +13,7 @@ export const receivePokemons = pokemons => ({
 export const fetchPokemons = () => {
   return dispatch => {
     dispatch(requestPokemons());
-    return fetch('http://pokeapi.co/api/v2/pokemon/?limit=15')
+    return fetch('http://pokeapi.co/api/v2/pokemon/?limit=151')
       .then(response => response.json())
       .then(pokemons => pokemons.results.map(p => ({
         id: getNumber(p),
