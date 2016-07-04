@@ -6,6 +6,7 @@ const PokemonList = ({ pokemons, onPokemonClick }) => (
     {pokemons.map(pokemon =>
       <PokemonItem
         key={pokemon.id}
+        id={pokemon.id}
         name={pokemon.name}
         {...pokemon}
         onClick={() => onPokemonClick(pokemon.id)}
