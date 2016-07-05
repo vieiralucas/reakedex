@@ -53,12 +53,27 @@ body {
 .search-bar {
     height: 200px;
     width: 100%;
+    padding-top: 25px;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+
+    .search-bar-icon {
+        position: absolute;
+        top: 50px;
+        left: 50px;
+        width: 100px;
+        height: 100px;
+
+        path {
+            fill: #999;
+        }
+    }
 
     .search-bar-input {
+        border: 1px solid #555;
+        width: 84%;
         height: 150px;
-        width: 95%;
-        margin-top: 25px;
-        margin-left: 2.5%;
-        margin-right: 2.5%;
+        padding-left: 148px;
+        color: #555;
     }
 }
