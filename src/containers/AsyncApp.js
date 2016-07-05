@@ -1,7 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { fetchPokemons } from '../actions';
+import { fetchPokemons, setSearchTerm, applyFilter } from '../actions';
 import PokemonList from '../components/PokemonList';
+import SearchBar from '../components/SearchBar';
 
 class AsyncApp extends Component {
   constructor(props) {
@@ -14,31 +15,37 @@ class AsyncApp extends Component {
   }
 
   render() {
-    const { pokemons, isFetching } = this.props;
+    const { pokemons, isFetching, searchTerm } = this.props;
     return (
       <div>
-        {pokemons.isFetching && pokemons.pokemons.length === 0 &&
+        <SearchBar searchTerm={searchTerm} onType={::this.setSearchTerm} />
+        {isFetching && pokemons.length === 0 &&
           <div className="spinner">
             <div className="bounce1"></div>
             <div className="bounce2"></div>
             <div className="bounce3"></div>
           </div>
         }
-        {pokemons.pokemons.length > 0 && 
-          <PokemonList pokemons={pokemons.pokemons} />
+        {pokemons.length > 0 && 
+          <PokemonList pokemons={pokemons} filter={searchTerm} />
         }
       </div>
     )
   }
+
+  setSearchTerm(event) {
+    const { dispatch } = this.props;
+    dispatch(setSearchTerm(event.target.value));
+    dispatch(applyFilter());
+  }
 }
 
 function mapStateToProps(state) {
-  const { pokemons, isFetching } = state
-
   return {
-    pokemons,
-    isFetching
-  }
+    pokemons: state.pokemons,
+    isFetching: state.isFetching,
+    searchTerm: state.searchTerm
+  };
 }
 
 export default connect(mapStateToProps)(AsyncApp)

@@ -1,5 +1,6 @@
 export const REQUEST_POKEMONS = 'REQUEST_POKEMONS';
 export const RECEIVE_POKEMONS = 'RECEIVE_POKEMONS';
+export const SET_SEARCH_TERM = 'SET_SEARCH_TERM';
 
 export const requestPokemons = () => ({
   type: REQUEST_POKEMONS
@@ -8,6 +9,11 @@ export const requestPokemons = () => ({
 export const receivePokemons = pokemons => ({
   type: RECEIVE_POKEMONS,
   pokemons
+});
+
+export const setSearchTerm = term => ({
+  type: SET_SEARCH_TERM,
+  term
 });
 
 export const fetchPokemons = () => {

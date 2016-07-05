@@ -1,29 +1,39 @@
-import { REQUEST_POKEMONS, RECEIVE_POKEMONS } from './actions';
+import { REQUEST_POKEMONS, RECEIVE_POKEMONS, SET_SEARCH_TERM } from './actions';
 import { combineReducers } from 'redux';
 
-const defaultPokemonsState = {
-  isFetching: false,
-  pokemons: []
-};
-
-const pokemons = (state = defaultPokemonsState, action) => {
+const pokemons = (state = [], action) => {
   switch (action.type) {
-    case REQUEST_POKEMONS:
-      return {
-        ...state,
-        isFetching: true
-      };
     case RECEIVE_POKEMONS:
-      return {
-        ...state,
-        isFetching: false,
-        pokemons: action.pokemons
-      };
+      return action.pokemons;
     default:
       return state;
   }
 };
 
-const rootReducer = combineReducers({pokemons});
+const isFetching = (state = false, action) => {
+  switch (action.type) {
+    case REQUEST_POKEMONS:
+      return true;
+    case RECEIVE_POKEMONS:
+      return false;
+    default:
+      return state;
+  }
+};
+
+const searchTerm = (state = '', action) => {
+  switch (action.type) {
+    case SET_SEARCH_TERM:
+      return action.term;
+    default: 
+      return state
+  }
+};
+
+const rootReducer = combineReducers({
+  pokemons,
+  isFetching,
+  searchTerm
+});
 
 export default rootReducer;
