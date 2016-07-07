@@ -7,11 +7,12 @@
     "lint": "eslint src",
     "test": "_mocha --compilers js:babel-core/register --recursive -r test/TestUtils",
     "test:watch": "npm run test -- --watch",
-    "setup": "rm -r dist && mkdir -p dist && cd dist && git init &&  git remote add origin git@github.com:vieiralucas/reakedex.git && git checkout -b gh-pages && cd ..",
+    "setup": "mkdir -p dist && cd dist && git init &&  git remote add origin git@github.com:vieiralucas/reakedex.git && git checkout -b gh-pages && cd ..",
     "build": "NODE_ENV=production webpack --progress && cp index.html dist/index.html && npm run sed",
     "sed": "sed -i -e 's/\\/static\\/bundle.js/\\.\\/bundle.min.js/g' dist/index.html",
     "gh-pages": "cd dist && git add . -A && git commit -m 'Deploy' --allow-empty && git push origin gh-pages -f",
-    "deploy": "npm run build && npm run gh-pages"
+    "deploy": "npm run clean; npm run setup && npm run build && npm run gh-pages",
+    "clean": "rm -rf dist"
   },
   "repository": {
     "type": "git",
