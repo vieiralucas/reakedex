@@ -1,8 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { fetchPokemons, setSearchTerm, applyFilter } from '../actions';
+import { fetchPokemons, setSearchTerm, applyFilter, setPage, setCurrentPokemon } from '../actions';
 import PokemonList from '../components/PokemonList';
 import SearchBar from '../components/SearchBar';
+import PokemonPage from '../components/PokemonPage';
 
 class AsyncApp extends Component {
   constructor(props) {
@@ -15,10 +16,12 @@ class AsyncApp extends Component {
   }
 
   render() {
-    const { pokemons, isFetching, searchTerm } = this.props;
+    const { page, currentPokemon, pokemons, isFetching, searchTerm } = this.props;
     return (
       <div>
-        <SearchBar searchTerm={searchTerm} onType={::this.setSearchTerm} />
+        {page === 'home' &&
+          <SearchBar searchTerm={searchTerm} onType={::this.setSearchTerm} />
+        }
         {isFetching && pokemons.length === 0 &&
           <div className="spinner">
             <div className="bounce1"></div>
@@ -26,8 +29,14 @@ class AsyncApp extends Component {
             <div className="bounce3"></div>
           </div>
         }
-        {pokemons.length > 0 && 
-          <PokemonList pokemons={pokemons} filter={searchTerm} />
+        {page === 'home' && pokemons.length > 0 &&
+          <PokemonList
+            pokemons={pokemons}
+            filter={searchTerm}
+            onPokemonClick={::this.onPokemonClick} />
+        }
+        {page === 'pokemon' &&
+          <PokemonPage {...currentPokemon} />
         }
       </div>
     )
@@ -38,11 +47,19 @@ class AsyncApp extends Component {
     dispatch(setSearchTerm(event.target.value));
     dispatch(applyFilter());
   }
+
+  onPokemonClick(pokemon) {
+    const { dispatch } = this.props;
+    dispatch(setCurrentPokemon(pokemon));
+    dispatch(setPage('pokemon'));
+  }
 }
 
 function mapStateToProps(state) {
   return {
+    page: state.page,
     pokemons: state.pokemons,
+    currentPokemon: state.currentPokemon,
     isFetching: state.isFetching,
     searchTerm: state.searchTerm
   };

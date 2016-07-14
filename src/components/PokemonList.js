@@ -11,7 +11,7 @@ const PokemonList = ({ pokemons, filter, onPokemonClick }) => (
           id={pokemon.id}
           name={pokemon.name}
           {...pokemon}
-          onClick={() => onPokemonClick(pokemon.id)}
+          onClick={() => onPokemonClick(pokemon)}
         />
       )}
   </ul>
