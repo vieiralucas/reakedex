@@ -2,10 +2,10 @@ import React from 'react';
 import SearchBar from './SearchBar';
 import PokemonList from './PokemonList';
 
-const Home = ({searchTerm, isFetching, pokemons, setSearchTerm}) => {
+const Home = ({searchTerm, isFetching, pokemons, actions}) => {
   return (
     <div>
-      <SearchBar searchTerm={searchTerm} onType={setSearchTerm} />
+      <SearchBar searchTerm={searchTerm} onType={actions.setSearchTerm} />
       {isFetching && pokemons.length === 0 &&
         <div className="spinner">
           <div className="bounce1"></div>
