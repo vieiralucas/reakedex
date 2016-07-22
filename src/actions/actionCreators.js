@@ -1,33 +1,19 @@
 import 'whatwg-fetch';
 
-export const REQUEST_POKEMONS = 'REQUEST_POKEMONS';
-export const RECEIVE_POKEMONS = 'RECEIVE_POKEMONS';
-export const SET_SEARCH_TERM = 'SET_SEARCH_TERM';
-export const SET_PAGE = 'SET_PAGE';
-export const SET_CURRENT_POKEMON = 'SET_CURRENT_POKEMON';
-
-export const setPage = page => ({
-  type: SET_PAGE,
-  page
-});
+import * as actionTypes from './actionTypes';
 
 export const requestPokemons = () => ({
-  type: REQUEST_POKEMONS
+  type: actionTypes.REQUEST_POKEMONS
 });
 
 export const receivePokemons = pokemons => ({
-  type: RECEIVE_POKEMONS,
+  type: actionTypes.RECEIVE_POKEMONS,
   pokemons
 });
 
 export const setSearchTerm = term => ({
-  type: SET_SEARCH_TERM,
+  type: actionTypes.SET_SEARCH_TERM,
   term
-});
-
-export const setCurrentPokemon = pokemon => ({
-  type: SET_CURRENT_POKEMON,
-  pokemon
 });
 
 export const fetchPokemons = () => {
@@ -43,8 +29,7 @@ export const fetchPokemons = () => {
       .then(pokemons => {
         dispatch(receivePokemons(pokemons));
         return pokemons;
-      })
-      .then(pokemons => dispatch(setCurrentPokemon(pokemons[0])));
+      });
   };
 };
 

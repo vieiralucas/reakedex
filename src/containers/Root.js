@@ -1,13 +1,18 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Provider } from 'react-redux'
-import configureStore from '../configureStore'
-import AsyncApp from './AsyncApp'
+import { Router, Route, IndexRoute } from 'react-router';
 
-const store = configureStore()
+import store, { history } from '../store'
+import App from './App'
+import Home from '../components/Home';
 
 const Root = () => (
   <Provider store={store}>
-    <AsyncApp />
+    <Router history={history}>
+      <Route path="/" component={App}>
+        <IndexRoute component={Home} />
+      </Route>
+    </Router>
   </Provider>
 );
 

@@ -1,4 +1,4 @@
-import { RECEIVE_POKEMONS } from '../actions';
+import { RECEIVE_POKEMONS } from '../actions/actionTypes';
 
 export default (state = [], action) => {
   switch (action.type) {

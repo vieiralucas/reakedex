@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import PokemonItem from './PokemonItem';
 
-const PokemonList = ({ pokemons, filter, onPokemonClick }) => (
+const PokemonList = ({ pokemons, filter }) => (
   <ul className="pokemon-list">
     {pokemons
       .filter(pokemon => pokemon.name.toLowerCase().includes(filter.toLowerCase()))
@@ -11,7 +11,6 @@ const PokemonList = ({ pokemons, filter, onPokemonClick }) => (
           id={pokemon.id}
           name={pokemon.name}
           {...pokemon}
-          onClick={() => onPokemonClick(pokemon)}
         />
       )}
   </ul>

@@ -1,4 +1,4 @@
-import { SET_SEARCH_TERM } from '../actions';
+import { SET_SEARCH_TERM } from '../actions/actionTypes';
 
 export default (state = '', action) => {
   switch (action.type) {
