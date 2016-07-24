@@ -6,9 +6,18 @@ export const requestPokemons = () => ({
   type: actionTypes.REQUEST_POKEMONS
 });
 
+export const requestPokemon = () => ({
+  type: actionTypes.REQUEST_POKEMON
+});
+
 export const receivePokemons = pokemons => ({
   type: actionTypes.RECEIVE_POKEMONS,
   pokemons
+});
+
+export const receivePokemon = pokemon => ({
+  type: actionTypes.RECEIVE_POKEMON,
+  pokemon
 });
 
 export const setSearchTerm = term => ({
@@ -29,6 +38,22 @@ export const fetchPokemons = () => {
       .then(pokemons => {
         dispatch(receivePokemons(pokemons));
         return pokemons;
+      });
+  };
+};
+
+export const fetchPokemon = id => {
+  return dispatch => {
+    dispatch(requestPokemon());
+    return fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
+      .then(response => response.json())
+      .then(pokemon => ({
+        ...pokemon,
+        name: pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)
+      }))
+      .then(pokemon => {
+        dispatch(receivePokemon(pokemon));
+        return pokemon;
       });
   };
 };

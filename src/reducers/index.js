@@ -1,12 +1,16 @@
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
 import pokemons from './pokemons';
-import isFetching from './isFetching';
+import isFetchingPokemons from './isFetchingPokemons';
+import isFetchingPokemon from './isFetchingPokemon';
+import pokemon from './pokemon';
 import searchTerm from './searchTerm';
 
 const rootReducer = combineReducers({
   pokemons,
-  isFetching,
+  isFetchingPokemons,
+  pokemon,
+  isFetchingPokemon,
   searchTerm,
   routing: routerReducer
 });

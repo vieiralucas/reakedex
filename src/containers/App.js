@@ -20,7 +20,10 @@ class App extends Component {
 const mapStateToProps = state => {
   return {
     pokemons: state.pokemons,
-    isFetching: state.isFetching,
+    isFetchingPokemons: state.isFetchingPokemons,
+    searchTerm: state.searchTerm,
+    pokemon: state.pokemon,
+    isFetchingPokemon: state.isFetchingPokemon,
     searchTerm: state.searchTerm
   };
 }
